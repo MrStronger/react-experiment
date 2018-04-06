@@ -16,12 +16,16 @@ class Children extends React.Component {
   }
   componentWillMount(){
       debugger
+      this.setState({v: 'componentWillMount'})
+
   }
   componentDidMount(){
   debugger
+  this.setState({v: 'componentDidMount'})
   }
   componentWillReceiveProps(nextProps){
   debugger
+  this.setState({v: 'componentWillReceiveProps'})
   
   }
   shouldComponentUpdate(nextProps, nextState){
@@ -41,7 +45,9 @@ class Children extends React.Component {
       debugger
     return (
       <div>
-        
+        {this.state.v}
+        {''}
+        {this.props.val}
       </div>
     )
   }
@@ -51,19 +57,21 @@ class C extends React.Component {
         debugger
       super(props);
       this.state = {
-        val: 0
+        val: 'init'
       }
     }
     componentWillMount(){
         debugger
+        this.setState({val: 'componentWillMount'})
         
     }
     componentDidMount(){
       debugger
-      this.setState({val: 1})
+      this.setState({val: 'componentDidMount'})
     }
     componentWillReceiveProps(nextProps){
     debugger
+    this.setState({val: 'componentWillReceiveProps'})
     
     }
     shouldComponentUpdate(nextProps, nextState){
@@ -82,10 +90,10 @@ class C extends React.Component {
     render() {
         debugger
       return (
-        <div>
+        <div  className='container'>
           "dscsdcsd"
-          <i>{this.state.val}</i>
-          <Children />
+          <i className='i'>{this.state.val}</i>
+          <Children val={this.state.val}/>
         </div>
       )
     }
